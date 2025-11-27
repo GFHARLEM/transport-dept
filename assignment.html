@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Egerton University Transport Department</title>
+  <link rel="stylesheet" href="styles.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" href="images/logo.jpeg">
+
+</head>
+
+<body>
+  <header class="main-header">  
+     <div class="logo">      
+      <figure>              
+       <img src="images/logo.jpeg">
+       <div class="center">
+          <figcaption>TRANSPORT DEPARTMENT</figcaption>
+        </div>
+      </figure>
+     </div>
+  <div class="menu-icon" id="menu-icon">
+    <span></span>  
+    <span></span>
+    <span></span>
+  </div>
+  </header>
+  
+  <nav class="nav-menu" id="nav-menu">
+    <ul>
+      <li class="menu-list"><a href="staff.html"><i class="fas fa-users"></i> Staff</a></li>            
+      <li class="menu-list"><a href="timetable.html"><i class="fas fa-calendar-check"></i>Timetable Schedule</a></li>                       
+      <li class="menu-list"><a href="booking.html"><i class="fas fa-book"></i> Booking Section</a></li>                        
+      <li class="menu-list"><a href="emergency.html"><i class="fas fa-first-aid"></i> Emergency Alert</a></li>    
+    </ul>
+  </nav>
+  <main>
+    
+    <section class="main">
+      <h2><i class="fas fa-info-circle"></i>About Us</h2>
+      <p>The Egerton University Transport Department is a vital component of the university's infrastructure, <b>responsible for managing and coordinating transportation-related activities for students, staff, and faculty.</b>Located within the university's premises, the department plays a crucial role in ensuring the smooth movement of people and goods, thereby supporting the academic and administrative functions of the institution.</p>
+    </section>      
+                   
+    <section class="main">
+        <h2><i class="fas fa-eye"></i>Vision</h2>
+        <p>The Transport Department at Egerton University has a vision to <b>"Be exemplary among Kenyan Universities in providing transport services".</b>This vision reflects the department's commitment to excellence and its goal of setting a high standard for transport services among Kenyan universities.</p>   
+      </section> 
+            
+            <section class="main" id="body">
+            <h2 class="section-title"><i class="fas fa-bullseye"></i>Mission</h2>
+            <ul class="services-list">
+                <li>
+                    <h3><i class="fas fa-bus"></i> Efficient Transport Services</h3>
+                    <p>Providing reliable and efficient transportation for students, staff, and university activities</p>
+                </li>
+                <li>
+                    <h3><i class="fas fa-car"></i>Vehicle Maintainance</h3>
+                    <p>Ensuring university vehicles are well-maintained through preventive and corrective maintenance services</p>
+                </li>
+                <li>
+                    <h3><i class="fas fa-users"></i>Support for University Activities</h3>
+                    <p>Ensuring university vehicles are well-maintained through preventive and corrective maintenance services</p>
+                </li>                                        
+            </ul>
+        </section>
+   
+             <section class="main" id="body">
+            <h2 class="section-title"><i class="fas fa-bullseye"></i>Objectives</h2>
+            <ul class="services-list">
+                <li>
+                    <h3><i class="fas fa-bus"></i> Transport</h3>
+                    <p>To provide effective, reliable and safe transportation services.</p>
+                </li>
+                <li>
+                    <h3><i class="fas fa-book"></i>Academics</h3>
+                    <p>To enhance research and administrative activities</p>
+                </li>                                                                                    
+            </ul>
+        </section>
+
+    <section class="main">
+      <h2><i class="fas fa-hands-helping"></i>Services</h2>
+      <ul>
+        <section class="view"><li><b>Academic trips.</b></li></section>
+        <img src="images/images (4).jpeg "></img>
+        <section class="view"><li><b>Research Student and Staff fieldwork.</b></li></section>
+        <img src="images/images (1).jpeg "></img>
+        <section class="view"><li><b>Extra-curricular functions.</b></li></section>
+      <img src="images/images (3).jpeg"></img>
+        <section class="view"><li><b>Funeral transport for student and staff.</b></li></section>
+        <img src="images/images (2).jpeg ">
+      </ul>
+    </section>
+    
+  </main>
+  <footer class="footer">
+    <h3>Contact Us :</h3>
+    <p><i class="fas fa-phone"></i><b>Phone</b> : 0701779262</p>
+    <p><i class="fas fa-envelope"></i><b>Email:</b> <a href="mailto:hillarygreat001@gmail.com">Transport department</a>
+    <p>&copy; 2025 Egerton University. All rights reserved.</p>
+    </footer>
+    
+  <script>
+    const menuIcon = document.getElementById('menu-icon');
+    const navMenu = document.getElementById('nav-menu');
+    let isOpen = false;
+
+    menuIcon.addEventListener('click', () => {
+      isOpen = !isOpen;
+      menuIcon.classList.toggle('active');
+      navMenu.style.display = isOpen ? 'block' : 'none';
+    });
+   
+  </script>
+</body>
+</html>
