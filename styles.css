@@ -72,6 +72,9 @@
        display:inline--block;
        cursor:pointer;
     }
+    p{
+        font-size:1rem;
+    }
     .menu-icon {     
       width: 30px;
       height: 20px;
@@ -157,7 +160,7 @@
     }
   
     main {
-      padding: 20px;
+      padding: 16px;
       max-width: 900px;
       margin: auto;
     }
@@ -189,7 +192,7 @@
   
     section main {
           font-size:100%;
-          gap:2 rem;
+          gap:1.5 rem;
     }
           
    .view {
@@ -260,7 +263,7 @@
         box-shadow: none;
         background: none;
         max-height: none !important;
-        
+    
       }
       
       nav ul {
@@ -379,7 +382,7 @@
         th, td {
             padding: 0.75rem 1rem;
             text-align: left;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid #111111;
         }
 
         th {
@@ -398,15 +401,23 @@
       background: #228B22;
       color: white;
       text-align: center;
-      padding-bottom:90px;
-      height:160px;
+      padding:10px;
+     /* height:160px;
       width:97% ;       
       margin-top: 30px;
       display: flex;
-      flex-direction:column;
+      flex-direction:column;*/
       align-items:center;
+      line-height:1;
+      
     }
-  
+  @media (max-width:600px){
+    footer{
+        padding:5px;
+        font-size:0.8rem;
+        text-align:center;
+    }
+  }
     footer a {
       color: #FFD700;
       text-decoration: none;
