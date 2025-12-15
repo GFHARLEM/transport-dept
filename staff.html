@@ -1,128 +1,959 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
-  
-    <link rel="stylesheet" href="styles.css">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Egerton University Transport Department Staff - Meet our dedicated team">
+    <meta name="keywords" content="Egerton University, transport staff, department team, contact information">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" href="images/logo.jpeg">
-     <title>staff</title>
- 
-      
+    <title>Egerton University Transport Department - Staff</title>
+    <style>
+        /* Reset and base styles */
+        :root {
+            --primary-blue: #003366;
+            --secondary-blue: #0059b3;
+            --accent-blue: #cce6ff;
+            --light-bg: #f9f9f9;
+            --white: #ffffff;
+            --dark-text: #222222;
+            --medium-text: #444444;
+            --light-text: #666666;
+            --border-color: #dddddd;
+            --table-header: #f2f7ff;
+            --table-hover: #f0f7ff;
+            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Header and navigation */
+        header {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo img {
+            height: 55px;
+            border-radius: 5px;
+            border: 2px solid var(--accent-blue);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo figcaption {
+            font-size: 1.1rem;
+            color: var(--accent-blue);
+            text-align: left;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* Mobile menu icon */
+        .menu-icon {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            padding: 0.5rem;
+            background: transparent;
+            border: none;
+            z-index: 1001;
+        }
+
+        .menu-icon span {
+            width: 25px;
+            height: 3px;
+            background: var(--white);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .menu-icon.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .menu-icon.active span:nth-child(2) {
+            opacity: 0;
+            width: 0;
+        }
+
+        .menu-icon.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Navigation menu */
+        .nav-menu {
+            background-color: var(--primary-blue);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+
+        .nav-menu ul {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-menu a {
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            font-weight: 500;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-menu a:hover, .nav-menu a:focus {
+            background-color: var(--secondary-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .nav-menu a:focus {
+            outline: 2px solid var(--accent-blue);
+            outline-offset: 2px;
+        }
+
+        .nav-menu a.current-page {
+            background-color: var(--secondary-blue);
+            border-left: 4px solid var(--accent-blue);
+        }
+
+        /* Hero section */
+        .hero {
+            background: linear-gradient(rgba(0, 51, 102, 0.9), rgba(0, 89, 179, 0.8)), url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 4rem 1.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.9rem 2rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.7rem;
+            min-width: 180px;
+        }
+
+        .btn-primary {
+            background-color: var(--white);
+            color: var(--primary-blue);
+            border: 2px solid var(--white);
+        }
+
+        .btn-primary:hover, .btn-primary:focus {
+            background-color: transparent;
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover, .btn-secondary:focus {
+            background-color: var(--white);
+            color: var(--primary-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+
+        /* Main content */
+        main {
+            padding: 0 1.5rem 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section {
+            margin-bottom: 3rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-header h2 {
+            color: var(--primary-blue);
+            font-size: 2.2rem;
+            margin-bottom: 0.8rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.8rem;
+        }
+
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-blue);
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            color: var(--medium-text);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Staff table */
+        .table-container {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            margin-bottom: 3rem;
+        }
+
+        .table-container:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 1rem;
+        }
+
+        thead {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        th {
+            padding: 1.2rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
+        }
+
+        th:not(:last-child):after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 60%;
+            width: 1px;
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        tbody tr {
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        tbody tr:hover {
+            background-color: var(--table-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        td {
+            padding: 1.2rem 1rem;
+            color: var(--medium-text);
+        }
+
+        td:first-child {
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+
+        /* Staff cards for mobile */
+        .staff-cards {
+            display: none;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .staff-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 1.8rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 4px solid var(--secondary-blue);
+        }
+
+        .staff-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .staff-card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .staff-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: var(--accent-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        .staff-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 0.3rem;
+        }
+
+        .staff-id {
+            font-size: 0.9rem;
+            color: var(--light-text);
+            background-color: #f0f7ff;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .staff-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .detail-item i {
+            color: var(--secondary-blue);
+            width: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        footer h3 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.7rem;
+            flex-wrap: wrap;
+        }
+
+        footer a {
+            color: var(--accent-blue);
+            transition: var(--transition);
+        }
+
+        footer a:hover {
+            color: var(--white);
+            text-decoration: underline;
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: 2.4rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 0.7rem 1rem;
+            }
+            
+            .menu-icon {
+                display: flex;
+            }
+            
+            .nav-menu {
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                display: none;
+                z-index: 999;
+                animation: slideDown 0.3s ease;
+            }
+            
+            @keyframes slideDown {
+                from { opacity: 0; transform: translateY(-10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            
+            .nav-menu.active {
+                display: block;
+            }
+            
+            .nav-menu ul {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 1rem;
+            }
+            
+            .nav-menu a {
+                padding: 1rem;
+                border-radius: 6px;
+                justify-content: flex-start;
+            }
+            
+            .hero {
+                padding: 3rem 1rem;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            main {
+                padding: 0 1rem 2rem;
+            }
+            
+            /* Switch from table to cards on mobile */
+            .table-container {
+                display: none;
+            }
+            
+            .staff-cards {
+                display: grid;
+            }
+            
+            footer {
+                padding: 2rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            
+            .logo img {
+                height: 50px;
+            }
+            
+            .logo figcaption {
+                font-size: 0.9rem;
+            }
+            
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .staff-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            footer h3 {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            .nav-menu, .hero-buttons, .menu-icon {
+                display: none !important;
+            }
+            
+            .table-container {
+                display: block !important;
+                box-shadow: none;
+                border: 1px solid var(--border-color);
+            }
+            
+            .staff-cards {
+                display: none !important;
+            }
+            
+            footer {
+                margin-top: 2rem;
+                border-top: 2px solid var(--primary-blue);
+            }
+        }
+    </style>
 </head> 
 <body>
-<header class="main-header">  
-     <div class="logo">      
-      <figure>              
-       <img src="images/logo.jpeg">
-       <div class="center">
-          <figcaption>STAFF</figcaption>
+    <header class="main-header">  
+        <div class="logo">      
+            <figure>              
+                <img src="images/logo.jpeg" alt="Egerton University Logo">
+                <div class="logo-text">
+                    <figcaption>TRANSPORT DEPARTMENT STAFF</figcaption>
+                </div>
+            </figure>
         </div>
-      </figure>
-     </div>
-            <div class="menu-icon" id="menu-icon">
-    <span></span>  
-    <span></span>
-    <span></span>
-  </div>
-        </header>
-        <nav class="nav-menu" id="nav-menu">
-    <ul>
-      <li class="menu-list"><a href="index.html"><i class="fas fa-house"></i> Home</a></li>            
-      <li class="menu-list"><a href="timetable.html"><i class="fas fa-calendar-check"></i>Timetable Schedule</a></li>                       
-      <li class="menu-list"><a href="booking.html"><i class="fas fa-book"></i> Booking Section</a></li>                        
-      <li class="menu-list"><a href="emergency.html"><i class="fas fa-first-aid"></i> Emergency Alert</a></li>    
-    </ul>
-  </nav>
+        <button class="menu-icon" id="menu-icon" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span>  
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+    
+    <nav class="nav-menu" id="nav-menu" aria-label="Main navigation">
+        <ul>
+            <li><a href="index.html"><i class="fas fa-house"></i> Home</a></li>            
+            <li><a href="timetable.html"><i class="fas fa-calendar-check"></i> Timetable Schedule</a></li>                       
+            <li><a href="booking.html"><i class="fas fa-book"></i> Booking Section</a></li>                        
+            <li><a href="emergency.html"><i class="fas fa-first-aid"></i> Emergency Alert</a></li>    
+        </ul>
+    </nav>
 
-        <div class="hero">
-            <div class="hero-content">
-                <h1 class="hero-title"></h1>
-                <p class="hero-subtitle">For efficient and reliable transport</p>
-                <div class="hero-buttons">
-                    <a href="#" class="btn btn-primary"><i class="fas fa-info-circle"></i> Learn More</a>
-                    <a href="#" class="btn btn-secondary"><i class="fas fa-phone-alt"></i> Get In Touch</a>
+    <div class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Our Dedicated Transport Team</h1>
+            <p class="hero-subtitle">Meet the professionals ensuring safe, reliable, and efficient transportation services for Egerton University</p>
+            <div class="hero-buttons">
+                <a href="#staff-table" class="btn btn-primary"><i class="fas fa-users"></i> View Staff Directory</a>
+                <a href="#contact" class="btn btn-secondary"><i class="fas fa-phone-alt"></i> Contact Our Team</a>
+            </div>
+        </div>
+    </div>
+    
+    <main>
+        <section class="section-header">
+            <h2>Transport Department Staff</h2>
+            <p>Our team of dedicated professionals is committed to providing exceptional transport services to the Egerton University community.</p>
+        </section>
+        
+        <!-- Staff Table for Desktop -->
+        <div class="table-container" id="staff-table">
+            <table aria-label="Transport Department Staff Directory">
+                <thead>
+                    <tr>
+                        <th><i class="fas fa-user"></i> Name</th>
+                        <th><i class="fas fa-id-badge"></i> Staff ID</th>
+                        <th><i class="fas fa-building"></i> Department</th>
+                        <th><i class="fas fa-phone"></i> Contact Information</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Hillary Odhiambo Ochieng</td>
+                        <td>001</td>
+                        <td>Transport Management</td>
+                        <td><a href="tel:0701779262">0701 779 262</a></td>
+                    </tr>
+                    <tr>
+                        <td>Sammy Njenga</td>
+                        <td>002</td>
+                        <td>Vehicle Maintenance</td>
+                        <td><a href="tel:0773199029">0773 199 029</a></td>
+                    </tr>
+                    <tr>
+                        <td>Rinah Cheti</td>
+                        <td>003</td>
+                        <td>Transport Coordination</td>
+                        <td><a href="tel:0794085603">0794 085 603</a></td>
+                    </tr>  
+                    <tr>
+                        <td>Aisha Mohammed</td>
+                        <td>004</td>
+                        <td>Booking & Scheduling</td>
+                        <td><a href="tel:0714972407">0714 972 407</a></td>
+                    </tr>
+                    <tr>
+                        <td>Sophia Madina</td>
+                        <td>005</td>
+                        <td>Safety & Compliance</td>
+                        <td><a href="tel:0716682238">0716 682 238</a></td>
+                    </tr>
+                    <tr>
+                        <td>Ummu Mohammed</td>
+                        <td>006</td>
+                        <td>Customer Service</td>
+                        <td><a href="tel:0710759553">0710 759 553</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Staff Cards for Mobile -->
+        <div class="staff-cards" id="staff-cards">
+            <div class="staff-card">
+                <div class="staff-card-header">
+                    <div class="staff-avatar">H</div>
+                    <div>
+                        <div class="staff-name">Hillary Odhiambo Ochieng</div>
+                        <div class="staff-id">ID: 001</div>
+                    </div>
+                </div>
+                <div class="staff-details">
+                    <div class="detail-item">
+                        <i class="fas fa-building"></i>
+                        <span>Transport Management</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-phone"></i>
+                        <span><a href="tel:0701779262">0701 779 262</a></span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>h.odhiambo@egerton.ac.ke</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="staff-card">
+                <div class="staff-card-header">
+                    <div class="staff-avatar">S</div>
+                    <div>
+                        <div class="staff-name">Sammy Njenga</div>
+                        <div class="staff-id">ID: 002</div>
+                    </div>
+                </div>
+                <div class="staff-details">
+                    <div class="detail-item">
+                        <i class="fas fa-building"></i>
+                        <span>Vehicle Maintenance</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-phone"></i>
+                        <span><a href="tel:0773199029">0773 199 029</a></span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>s.njenga@egerton.ac.ke</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="staff-card">
+                <div class="staff-card-header">
+                    <div class="staff-avatar">R</div>
+                    <div>
+                        <div class="staff-name">Rinah Cheti</div>
+                        <div class="staff-id">ID: 003</div>
+                    </div>
+                </div>
+                <div class="staff-details">
+                    <div class="detail-item">
+                        <i class="fas fa-building"></i>
+                        <span>Transport Coordination</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-phone"></i>
+                        <span><a href="tel:0794085603">0794 085 603</a></span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>r.cheti@egerton.ac.ke</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="staff-card">
+                <div class="staff-card-header">
+                    <div class="staff-avatar">A</div>
+                    <div>
+                        <div class="staff-name">Aisha Mohammed</div>
+                        <div class="staff-id">ID: 004</div>
+                    </div>
+                </div>
+                <div class="staff-details">
+                    <div class="detail-item">
+                        <i class="fas fa-building"></i>
+                        <span>Booking & Scheduling</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-phone"></i>
+                        <span><a href="tel:0714972407">0714 972 407</a></span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>a.mohammed@egerton.ac.ke</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="staff-card">
+                <div class="staff-card-header">
+                    <div class="staff-avatar">S</div>
+                    <div>
+                        <div class="staff-name">Sophia Madina</div>
+                        <div class="staff-id">ID: 005</div>
+                    </div>
+                </div>
+                <div class="staff-details">
+                    <div class="detail-item">
+                        <i class="fas fa-building"></i>
+                        <span>Safety & Compliance</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-phone"></i>
+                        <span><a href="tel:0716682238">0716 682 238</a></span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>s.madina@egerton.ac.ke</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="staff-card">
+                <div class="staff-card-header">
+                    <div class="staff-avatar">U</div>
+                    <div>
+                        <div class="staff-name">Ummu Mohammed</div>
+                        <div class="staff-id">ID: 006</div>
+                    </div>
+                </div>
+                <div class="staff-details">
+                    <div class="detail-item">
+                        <i class="fas fa-building"></i>
+                        <span>Customer Service</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-phone"></i>
+                        <span><a href="tel:0710759553">0710 759 553</a></span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>u.mohammed@egerton.ac.ke</span>
+                    </div>
                 </div>
             </div>
         </div>
+    </main>
     
-              <section>
-                <div class="table-container"> 
-                 <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Staff ID</th>
-                            <th>Department</th>
-                            <th>Contact Information</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Hillary Odhiambo Ochieng</td>
-                            <td>001</td>
-                            <td>Transport</td>
-                            <td>0701779262</td>
-                        </tr>
-                        <tr>
-                            <td>Sammy Njenga</td>
-                            <td>002</td>
-                            <td>Transport</td>
-                            <td>0773199029</td>
-                        </tr>
-                        <tr>
-                            <td>Rinah Cheti</td>
-                            <td>003</td>
-                            <td>Transport</td>
-                            <td>0794085603</td>
-                        </tr>  
-                        <tr>
-                            <td>Aisha Mohammed</td>
-                            <td>004</td>
-                            <td>Transport</td>
-                            <td>0714972407</td>
-                        </tr>
-                      <tr>
-                            <td>Sophia Madina</td>
-                            <td>005</td>
-                            <td>Transport</td>
-                            <td>0716682238</td>
-                      </tr>
-                      <tr>
-                           <td>Ummu Mohammed</td>
-                           <td>006</td>
-                           <td>Transport</td>
-                           <td>0710759553</td>
-                      </tr>
-                    </tbody>
-                </table>
-              </section>
-            </div>
-        </section>
-    <footer>
-    <h3>Contact Us :</h3>
-    <p><i class="fas fa-phone"></i><b>Phone</b> : 0701779262</p>
-    <p><i class="fas fa-envelope"></i><b>Email:</b> <a href="mailto:hillarygreat001@gmail.com">Transport department</a>
-    <p>&copy; 2025 Egerton University. All rights reserved.</p>
+    <footer id="contact">
+        <h3>Contact Transport Department</h3>
+        <p><i class="fas fa-phone"></i> <b>Phone:</b> <a href="tel:0701779262">0701 779 262</a></p>
+        <p><i class="fas fa-envelope"></i> <b>Email:</b> <a href="mailto:transport@egerton.ac.ke">transport@egerton.ac.ke</a></p>
+        <p><i class="fas fa-clock"></i> <b>Office Hours:</b> Mon-Fri 8:00 AM - 5:00 PM</p>
+        <p><i class="fas fa-map-marker-alt"></i> <b>Location:</b> Transport Department, Main Campus</p>
+        <p class="copyright">&copy; 2025 Egerton University. All rights reserved. <br>Our staff is dedicated to serving the university community with excellence.</p>
     </footer>
+    
     <script>
-    const menuIcon = document.getElementById('menu-icon');
-    const navMenu = document.getElementById('nav-menu');
-    let isOpen = false;
+        // Mobile menu toggle
+        const menuIcon = document.getElementById('menu-icon');
+        const navMenu = document.getElementById('nav-menu');
+        let isOpen = false;
 
-    menuIcon.addEventListener('click', () => {
-      isOpen = !isOpen;
-      menuIcon.classList.toggle('active');
-      navMenu.style.display = isOpen ? 'block' : 'none';
-    });
-   
-  </script>   
+        menuIcon.addEventListener('click', () => {
+            isOpen = !isOpen;
+            menuIcon.classList.toggle('active');
+            menuIcon.setAttribute('aria-expanded', isOpen);
+            navMenu.classList.toggle('active');
+            
+            // Close menu when clicking a link
+            if (isOpen) {
+                document.querySelectorAll('.nav-menu a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        menuIcon.classList.remove('active');
+                        menuIcon.setAttribute('aria-expanded', false);
+                        navMenu.classList.remove('active');
+                        isOpen = false;
+                    });
+                });
+            }
+        });
+
+        // Accessibility improvements
+        document.addEventListener('keydown', (e) => {
+            // Close menu on Escape key
+            if (e.key === 'Escape' && isOpen) {
+                menuIcon.classList.remove('active');
+                menuIcon.setAttribute('aria-expanded', false);
+                navMenu.classList.remove('active');
+                isOpen = false;
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId !== '#') {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+        
+        // Format phone numbers for better readability
+        document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+            const phoneNumber = link.getAttribute('href').replace('tel:', '');
+            if (phoneNumber.length === 10) {
+                const formatted = `${phoneNumber.substring(0, 4)} ${phoneNumber.substring(4, 7)} ${phoneNumber.substring(7)}`;
+                link.textContent = formatted;
+            }
+        });
+    </script>   
 </body>
 </html>
-
-
-
-
