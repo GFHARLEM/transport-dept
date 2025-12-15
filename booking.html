@@ -1,104 +1,787 @@
 <!DOCTYPE html>
-<html>
-    <head>
-   <meta charset="UTF-8">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>EGERTON UNIVERSITY TRANSPORT DEPARTMENT</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta name="description" content="Egerton University Transport Department - Book vehicles for class and department trips">
+  <meta name="keywords" content="Egerton University, transport, bus booking, trip request, vehicle rental">
+  <title>Egerton University Transport Department - Trip Booking System</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" href="images/logo.jpeg">
-</head>
-    <body>
-        <header class="main-header">
-            <div class="logo">
-                <figure>
-                <img src="images/logo.jpeg">
-                <figcaption class="figcaption">BOOKING SECTION</figcaption>
-            </figure>
-            </div>
-            <div class="menu-icon" id="menu-icon">
-    <span></span>  
-    <span></span>
-    <span></span>
-  </div>
-        </header>
-        <nav class="nav-menu" id="nav-menu">
-    <ul>
-      <li class="menu-list"><a href="index.html"><i class="fas fa-house"></i> Home</a></li>
-      <li class="menu-list"><a href="staff.html"><i class="fas fa-users"></i> Staff</a></li>            
-      <li class="menu-list"><a href="timetable.html"><i class="fas fa-calendar-check"></i>Timetable Schedule</a></li>                       
-                              
-      <li class="menu-list"><a href="emergency.html"><i class="fas fa-first-aid"></i> Emergency Alert</a></li>    
-    </ul>
-  </nav>
-        <main>
-        <section class="main">
-   <h2 class="trip">class / department trip request</h2>
-   
-    <p>fill this form to request a bus for a trip,office will review your request( for class reps and other students representatives) </p>
-    <form>
-        <ul>
-        <div>
-           <li> <lable for="department" >Department/class</lable></li>
-            <input name="department" type="text" placeholder="e.g. computer science 2nd year"required>
-        </div>
-        <div>
-           <li> <lable for="coordinator">Coordinator's name</lable></li>
-            <input name="coordinator" type="text" placeholder="name of organizer"required>
-        </div>
-        <div>
-            <li><lable for="phone">Coordinator's phone number</lable></li>
-            <input name="phone" type="tel" placeholder="0712345678"required>
-        </div>
-         <div>
-            <li><div><lable for="date">Date</lable></div></li>
-            <input name="date" type="date" placeholder="dd/mm/yr" required>
-        </div>
-         <div>
-           <li> <lable for="departtime">Anticipated depature time</lable></li>
-            <input name="departtime" type="time" placeholder="1800 hrs" required>
-        </div>
-         <div>
-            <li><lable for="returntime">Anticipated return time</lable></li>
-            <input name="returntime" type="time" placeholder="1800 hrs" required>
-        </div>
-         <div>
-            <li><lable for="numstudents">Number of students</lable></li>
-            <input name="numstudents" type="number" min="1" placeholder="30" required>
-        </div>
-         <div>
-            <li><lable for="Destination">destination</lable></li>
-            <input name="destination" type="text" placeholder="e.g.konza" required>
-        </div>
-         <div>
-           <li> <lable for="notes">additional notes/safety requirements</lable></li>
-            <textarea name="notes" type="text" placeholder="Any special instructions (medical, equipment, etc.)" required></textarea>
-        </div></ul>
-    
-        <div>
-            <button type="submit">send request</button>
-            <button type="button" onclick="reset()">reset</button>
-        </div>
-    </form>
-</section>
-    <section class="main">
-        <h2>Available vehicles for booking</h2>
+  <link rel="icon" href="images/logo.jpeg">
+  <style>
+    /* Reset and base styles */
+    :root {
+      --primary-blue: #003366;
+      --secondary-blue: #0059b3;
+      --accent-blue: #cce6ff;
+      --light-bg: #f9f9f9;
+      --white: #ffffff;
+      --dark-text: #222222;
+      --medium-text: #444444;
+      --border-color: #dddddd;
+      --success-green: #28a745;
+      --error-red: #dc3545;
+      --shadow: 0 4px 12px rgba(0,0,0,0.1);
+      --transition: all 0.3s ease;
+    }
 
-        <ul>
-            <li><img src="images/images (3).jpeg"></li>
-            <li><img src="images/images (4).jpeg"></li>
-        </ul>
-        <p class="p">last upated on 11/07/25</p>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      line-height: 1.6;
+      background-color: var(--light-bg);
+      color: var(--dark-text);
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Header and navigation */
+    header {
+      background-color: var(--primary-blue);
+      color: var(--white);
+      padding: 0.5rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .logo img {
+      height: 50px;
+      border-radius: 5px;
+      border: 2px solid var(--accent-blue);
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo h1 {
+      font-size: 1.4rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .logo figcaption {
+      font-size: 0.8rem;
+      color: var(--accent-blue);
+      text-align: left;
+    }
+
+    .nav-menu {
+      display: flex;
+    }
+
+    .nav-menu ul {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-menu a {
+      padding: 0.7rem 1.2rem;
+      border-radius: 5px;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+    }
+
+    .nav-menu a:hover, .nav-menu a:focus {
+      background-color: var(--secondary-blue);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .nav-menu a:focus {
+      outline: 2px solid var(--accent-blue);
+      outline-offset: 2px;
+    }
+
+    /* Mobile menu */
+    .menu-icon {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+      padding: 0.5rem;
+      background: transparent;
+      border: none;
+      z-index: 1001;
+    }
+
+    .menu-icon span {
+      width: 25px;
+      height: 3px;
+      background: var(--white);
+      transition: var(--transition);
+      border-radius: 2px;
+    }
+
+    .menu-icon.active span:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .menu-icon.active span:nth-child(2) {
+      opacity: 0;
+      width: 0;
+    }
+
+    .menu-icon.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    /* Main content */
+    main {
+      padding: 2rem 1.5rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    h2 {
+      color: var(--primary-blue);
+      margin-bottom: 1.5rem;
+      text-align: center;
+      position: relative;
+      padding-bottom: 0.8rem;
+    }
+
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background-color: var(--secondary-blue);
+      border-radius: 2px;
+    }
+
+    .section-intro {
+      text-align: center;
+      margin-bottom: 2rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      color: var(--medium-text);
+      font-size: 1.1rem;
+    }
+
+    /* Form styles */
+    form {
+      background-color: var(--white);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      max-width: 750px;
+      margin: auto;
+      transition: var(--transition);
+    }
+
+    form:hover {
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    form label {
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--primary-blue);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .required::after {
+      content: '*';
+      color: var(--error-red);
+      margin-left: 0.2rem;
+    }
+
+    input, textarea, select {
+      padding: 0.8rem;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: var(--transition);
+      width: 100%;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--primary-blue);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.1);
+    }
+
+    .input-hint {
+      font-size: 0.85rem;
+      color: var(--medium-text);
+      margin-top: 0.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .input-hint i {
+      color: var(--secondary-blue);
+    }
+
+    .form-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    button {
+      padding: 0.9rem 2rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .btn-primary {
+      background-color: var(--primary-blue);
+      color: var(--white);
+      flex: 1;
+      min-width: 160px;
+    }
+
+    .btn-primary:hover, .btn-primary:focus {
+      background-color: var(--secondary-blue);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    .btn-secondary {
+      background-color: var(--white);
+      color: var(--primary-blue);
+      border: 2px solid var(--primary-blue);
+      flex: 1;
+      min-width: 120px;
+    }
+
+    .btn-secondary:hover, .btn-secondary:focus {
+      background-color: #f0f7ff;
+      transform: translateY(-3px);
+    }
+
+    /* Confirmation message */
+    .confirmation {
+      display: none;
+      background-color: var(--success-green);
+      color: white;
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin-top: 1.5rem;
+      text-align: center;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Vehicle gallery */
+    .vehicle-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .vehicle-card {
+      background-color: var(--white);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      height: 100%;
+    }
+
+    .vehicle-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    .vehicle-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .vehicle-info {
+      padding: 1.5rem;
+    }
+
+    .vehicle-info h3 {
+      color: var(--primary-blue);
+      margin-bottom: 0.8rem;
+    }
+
+    .vehicle-details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .vehicle-details span {
+      background-color: #f0f7ff;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      color: var(--primary-blue);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .availability {
+      font-weight: 600;
+      color: var(--success-green);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .availability.unavailable {
+      color: var(--error-red);
+    }
+
+    /* Contact section */
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .contact-card {
+      background-color: var(--white);
+      border-radius: 10px;
+      padding: 1.8rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+    }
+
+    .contact-card i {
+      font-size: 2.5rem;
+      color: var(--primary-blue);
+      margin-bottom: 1rem;
+    }
+
+    .contact-card h3 {
+      margin-bottom: 0.8rem;
+      color: var(--primary-blue);
+    }
+
+    .contact-card p {
+      color: var(--medium-text);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--primary-blue);
+      color: var(--white);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    footer h3 {
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+
+    footer h3:after {
+      background-color: var(--accent-blue);
+    }
+
+    .footer-content {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .footer-contact {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-contact a {
+      color: var(--accent-blue);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-contact a:hover {
+      color: var(--white);
+      text-decoration: underline;
+    }
+
+    .copyright {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.8);
+      font-size: 0.9rem;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 992px) {
+      .logo h1 {
+        font-size: 1.2rem;
+      }
+      
+      .vehicle-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 0.5rem 1rem;
+      }
+      
+      .nav-menu {
+        display: none;
+        flex-direction: column;
+        background-color: var(--primary-blue);
+        width: 100%;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        padding: 1rem;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        z-index: 999;
+        animation: slideDown 0.3s ease;
+      }
+
+      @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .nav-menu.active {
+        display: flex;
+      }
+
+      .nav-menu ul {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .nav-menu a {
+        padding: 1rem;
+        border-radius: 6px;
+        border-left: 3px solid transparent;
+      }
+
+      .nav-menu a:hover {
+        border-left-color: var(--accent-blue);
+      }
+
+      .menu-icon {
+        display: flex;
+      }
+
+      main {
+        padding: 1.5rem 1rem;
+      }
+
+      .form-buttons {
+        flex-direction: column;
+      }
+
+      .btn-primary, .btn-secondary {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+      
+      .logo h1 {
+        font-size: 1.1rem;
+      }
+      
+      .logo img {
+        height: 45px;
+      }
+      
+      form {
+        padding: 1.5rem;
+      }
+      
+      .vehicle-gallery {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-info {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="main-header">
+    <div class="logo">
+      <img src="images/logo.jpeg" alt="Egerton University Logo">
+      <div class="logo-text">
+        <h1>Egerton University Transport Department</h1>
+        <figcaption>Trip Booking & Vehicle Management System</figcaption>
+      </div>
+    </div>
+    <button class="menu-icon" id="menu-icon" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span></span>  
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="nav-menu" id="nav-menu" aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html" aria-current="page"><i class="fas fa-house"></i> Home</a></li>
+        <li><a href="staff.html"><i class="fas fa-users"></i> Staff</a></li>            
+        <li><a href="timetable.html"><i class="fas fa-calendar-check"></i> Timetable</a></li>                       
+        <li><a href="emergency.html"><i class="fas fa-first-aid"></i> Emergency</a></li>    
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="trip-request">
+      <h2>Class / Department Trip Request</h2>
+      <p class="section-intro">Fill this form to request a bus for a trip. Office will review your request (for class reps and other student representatives). All fields marked with * are required.</p>
+      <form id="tripForm" novalidate>
+        <div class="form-group">
+          <label for="department" class="required"><i class="fas fa-graduation-cap"></i> Department/Class</label>
+          <input id="department" name="department" type="text" placeholder="e.g. Computer Science 2nd Year" required>
+          <span class="input-hint"><i class="fas fa-info-circle"></i> Enter your department or class name</span>
+        </div>
+        
+        <div class="form-group">
+          <label for="coordinator" class="required"><i class="fas fa-user"></i> Coordinator's Name</label>
+          <input id="coordinator" name="coordinator" type="text" placeholder="Name of organizer" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="phone" class="required"><i class="fas fa-phone"></i> Coordinator's Phone Number</label>
+          <input id="phone" name="phone" type="tel" placeholder="0712345678" pattern="[0-9]{10}" required>
+          <span class="input-hint"><i class="fas fa-info-circle"></i> 10-digit Kenyan phone number without spaces or dashes</span>
+        </div>
+        
+        <div class="form-group">
+          <label for="date" class="required"><i class="fas fa-calendar-day"></i> Trip Date</label>
+          <input id="date" name="date" type="date" required min="">
+          <span class="input-hint"><i class="fas fa-info-circle"></i> Select a date at least 3 days from today</span>
+        </div>
+        
+        <div class="form-group">
+          <label for="departtime" class="required"><i class="fas fa-clock"></i> Anticipated Departure Time</label>
+          <input id="departtime" name="departtime" type="time" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="returntime" class="required"><i class="fas fa-clock"></i> Anticipated Return Time</label>
+          <input id="returntime" name="returntime" type="time" required>
+          <span class="input-hint"><i class="fas fa-info-circle"></i> Must be after departure time</span>
+        </div>
+        
+        <div class="form-group">
+          <label for="numstudents" class="required"><i class="fas fa-users"></i> Number of Students</label>
+          <input id="numstudents" name="numstudents" type="number" min="1" max="100" placeholder="30" required>
+          <span class="input-hint"><i class="fas fa-info-circle"></i> Maximum capacity per bus is 60 students</span>
+        </div>
+        
+        <div class="form-group">
+          <label for="destination" class="required"><i class="fas fa-map-marker-alt"></i> Destination</label>
+          <input id="destination" name="destination" type="text" placeholder="e.g. Konza City" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="notes" class="required"><i class="fas fa-sticky-note"></i> Additional Notes / Safety Requirements</label>
+          <textarea id="notes" name="notes" rows="4" placeholder="Any special instructions (medical, equipment, etc.)" required></textarea>
+          <span class="input-hint"><i class="fas fa-info-circle"></i> Please mention any accessibility needs or medical requirements</span>
+        </div>
+        
+        <div class="form-buttons">
+          <button type="submit" class="btn-primary"><i class="fas fa-paper-plane"></i> Send Request</button>
+          <button type="reset" class="btn-secondary"><i class="fas fa-redo"></i> Reset Form</button>
+        </div>
+        
+        <div id="confirmation" class="confirmation" role="alert" aria-live="polite">
+          <i class="fas fa-check-circle"></i> Your trip request has been submitted successfully! We'll contact you within 24 hours.
+        </div>
+      </form>
     </section>
-</main>
-    <footer class="footer">
-    <h3>Contact Us :</h3>
-    <p><i class="fas fa-phone"></i><b>Phone</b> : 0701779262</p>
-    <p><i class="fas fa-envelope"></i><b>Email:</b> <a href="mailto:hillarygreat001@gmail.com">Transport department</a>
-    <p>&copy; 2025 Egerton University. All rights reserved.</p>
-    </footer>
-    <script>
+
+    <section class="available-vehicles">
+      <h2>Available Vehicles for Booking</h2>
+      <p class="section-intro">Our fleet includes various vehicles suitable for different group sizes and trip types.</p>
+      
+      <div class="vehicle-gallery">
+        <article class="vehicle-card">
+          <img src="images/images (3).jpeg" alt="Modern mini bus with capacity of 30 passengers">
+          <div class="vehicle-info">
+            <h3>Mini Bus</h3>
+            <div class="vehicle-details">
+              <span><i class="fas fa-users"></i> 30 Seats</span>
+              <span><i class="fas fa-snowflake"></i> A/C</span>
+              <span><i class="fas fa-wifi"></i> WiFi</span>
+            </div>
+            <p>Ideal for medium-sized class trips. Comfortable seating and air conditioning for longer journeys.</p>
+            <div class="availability"><i class="fas fa-check-circle"></i> Available for booking</div>
+          </div>
+        </article>
+        
+        <article class="vehicle-card">
+          <img src="images/images (4).jpeg" alt="Luxury coach bus with capacity of 60 passengers">
+          <div class="vehicle-info">
+            <h3>Coach Bus</h3>
+            <div class="vehicle-details">
+              <span><i class="fas fa-users"></i> 60 Seats</span>
+              <span><i class="fas fa-snowflake"></i> A/C</span>
+              <span><i class="fas fa-tv"></i> Entertainment</span>
+            </div>
+            <p>Perfect for large department trips. Includes reclining seats, overhead storage, and entertainment system.</p>
+            <div class="availability"><i class="fas fa-check-circle"></i> Available for booking</div>
+          </div>
+        </article>
+        
+        <article class="vehicle-card">
+          <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="University van with capacity of 15 passengers">
+          <div class="vehicle-info">
+            <h3>University Van</h3>
+            <div class="vehicle-details">
+              <span><i class="fas fa-users"></i> 15 Seats</span>
+              <span><i class="fas fa-briefcase"></i> Luggage</span>
+              <span><i class="fas fa-gas-pump"></i> Efficient</span>
+            </div>
+            <p>Suitable for small groups or faculty trips. Fuel-efficient and easy to maneuver in tight spaces.</p>
+            <div class="availability unavailable"><i class="fas fa-clock"></i> Available from next week</div>
+          </div>
+        </article>
+      </div>
+      
+      <p class="p" aria-live="polite">Last updated on <time datetime="2025-07-11">11/07/25</time></p>
+    </section>
+
+    <section class="contact-section">
+      <h2>Contact Transport Department</h2>
+      <p class="section-intro">Get in touch with us for any inquiries or emergency situations.</p>
+      
+      <div class="contact-info">
+        <div class="contact-card">
+          <i class="fas fa-phone-alt"></i>
+          <h3>Phone</h3>
+          <p><strong>Main Office:</strong> 0701779262</p>
+          <p><strong>Emergency:</strong> 0700123456</p>
+          <p>Mon-Fri: 8:00 AM - 5:00 PM</p>
+        </div>
+        
+        <div class="contact-card">
+          <i class="fas fa-envelope"></i>
+          <h3>Email</h3>
+          <p><strong>Bookings:</strong> transport@egerton.ac.ke</p>
+          <p><strong>General Inquiries:</strong> transport-help@egerton.ac.ke</p>
+          <p>Response within 24 hours</p>
+        </div>
+        
+        <div class="contact-card">
+          <i class="fas fa-map-marker-alt"></i>
+          <h3>Location</h3>
+          <p><strong>Transport Department</strong></p>
+          <p>Egerton University Main Campus</p>
+          <p>Njoro, Nakuru County</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <h3>Contact Us</h3>
+      <div class="footer-contact">
+        <a href="tel:0701779262"><i class="fas fa-phone"></i> 0701779262</a>
+        <a href="mailto:transport@egerton.ac.ke"><i class="fas fa-envelope"></i> transport@egerton.ac.ke</a>
+        <a href="https://www.egerton.ac.ke" target="_blank" rel="noopener"><i class="fas fa-globe"></i> www.egerton.ac.ke</a>
+      </div>
+      <p class="copyright">&copy; 2025 Egerton University. All rights reserved. <br>This website follows WCAG 2.1 accessibility guidelines.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
     const menuIcon = document.getElementById('menu-icon');
     const navMenu = document.getElementById('nav-menu');
     let isOpen = false;
@@ -106,10 +789,106 @@
     menuIcon.addEventListener('click', () => {
       isOpen = !isOpen;
       menuIcon.classList.toggle('active');
-      navMenu.style.display = isOpen ? 'block' : 'none';
+      menuIcon.setAttribute('aria-expanded', isOpen);
+      navMenu.classList.toggle('active');
+      
+      // Close menu when clicking a link
+      if (isOpen) {
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+          link.addEventListener('click', () => {
+            menuIcon.classList.remove('active');
+            menuIcon.setAttribute('aria-expanded', false);
+            navMenu.classList.remove('active');
+            isOpen = false;
+          });
+        });
+      }
     });
-   
-  </script>
-    </body>
-    </html>
 
+    // Form validation and submission
+    const tripForm = document.getElementById('tripForm');
+    const confirmation = document.getElementById('confirmation');
+    
+    // Set minimum date to today + 3 days
+    const dateInput = document.getElementById('date');
+    const today = new Date();
+    const minDate = new Date(today);
+    minDate.setDate(today.getDate() + 3);
+    dateInput.min = minDate.toISOString().split('T')[0];
+    
+    // Phone number validation
+    const phoneInput = document.getElementById('phone');
+    phoneInput.addEventListener('input', () => {
+      const phoneValue = phoneInput.value.replace(/\D/g, '');
+      phoneInput.value = phoneValue;
+    });
+    
+    // Time validation
+    const departTimeInput = document.getElementById('departtime');
+    const returnTimeInput = document.getElementById('returntime');
+    
+    returnTimeInput.addEventListener('change', () => {
+      if (departTimeInput.value && returnTimeInput.value) {
+        if (departTimeInput.value >= returnTimeInput.value) {
+          returnTimeInput.setCustomValidity('Return time must be after departure time');
+          returnTimeInput.reportValidity();
+        } else {
+          returnTimeInput.setCustomValidity('');
+        }
+      }
+    });
+    
+    // Form submission
+    tripForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Additional validation
+      if (!tripForm.checkValidity()) {
+        tripForm.reportValidity();
+        return;
+      }
+      
+      // Show confirmation message
+      confirmation.style.display = 'block';
+      
+      // Scroll to confirmation
+      confirmation.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      
+      // Reset form after 5 seconds
+      setTimeout(() => {
+        tripForm.reset();
+        confirmation.style.display = 'none';
+      }, 5000);
+      
+      // In a real application, you would send form data to a server here
+      console.log('Form submitted with data:', {
+        department: document.getElementById('department').value,
+        coordinator: document.getElementById('coordinator').value,
+        phone: document.getElementById('phone').value,
+        date: document.getElementById('date').value,
+        departtime: document.getElementById('departtime').value,
+        returntime: document.getElementById('returntime').value,
+        numstudents: document.getElementById('numstudents').value,
+        destination: document.getElementById('destination').value,
+        notes: document.getElementById('notes').value
+      });
+    });
+    
+    // Reset form handler
+    tripForm.addEventListener('reset', () => {
+      confirmation.style.display = 'none';
+    });
+    
+    // Accessibility improvements
+    document.addEventListener('keydown', (e) => {
+      // Close menu on Escape key
+      if (e.key === 'Escape' && isOpen) {
+        menuIcon.classList.remove('active');
+        menuIcon.setAttribute('aria-expanded', false);
+        navMenu.classList.remove('active');
+        isOpen = false;
+      }
+    });
+  </script>
+</body>
+</html>
