@@ -1,1020 +1,1070 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Egerton University Transport Department Staff - Meet our dedicated team">
-    <meta name="keywords" content="Egerton University, transport staff, department team, contact information">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" href="images/logo.jpeg">
-    <title>Egerton University Transport Department - Staff</title>
-    <style>
-        /* Reset and base styles */
-        :root {
-            --primary-blue: #003366;
-            --secondary-blue: #0059b3;
-            --accent-blue: #cce6ff;
-            --light-bg: #f9f9f9;
-            --white: #ffffff;
-            --dark-text: #222222;
-            --medium-text: #444444;
-            --light-text: #666666;
-            --border-color: #dddddd;
-            --table-header: #f2f7ff;
-            --table-hover: #f0f7ff;
-            --shadow: 0 4px 12px rgba(0,0,0,0.1);
-            --transition: all 0.3s ease;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            line-height: 1.6;
-            background-color: var(--light-bg);
-            color: var(--dark-text);
-            overflow-x: hidden;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: var(--transition);
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-
-        /* Header and navigation */
-        header {
-            background-color: var(--primary-blue);
-            color: var(--white);
-            padding: 0.8rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .logo img {
-            height: 55px;
-            border-radius: 5px;
-            border: 2px solid var(--accent-blue);
-        }
-
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .logo figcaption {
-            font-size: 1.1rem;
-            color: var(--accent-blue);
-            text-align: left;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-
-        /* Mobile menu icon */
-        .menu-icon {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 5px;
-            padding: 0.5rem;
-            background: transparent;
-            border: none;
-            z-index: 1001;
-        }
-
-        .menu-icon span {
-            width: 25px;
-            height: 3px;
-            background: var(--white);
-            transition: var(--transition);
-            border-radius: 2px;
-        }
-
-        .menu-icon.active span:nth-child(1) {
-            transform: rotate(45deg) translate(6px, 6px);
-        }
-
-        .menu-icon.active span:nth-child(2) {
-            opacity: 0;
-            width: 0;
-        }
-
-        .menu-icon.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(6px, -6px);
-        }
-
-        /* Navigation menu */
-        .nav-menu {
-            background-color: var(--primary-blue);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: var(--transition);
-        }
-
-        .nav-menu ul {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            padding: 0.8rem 1.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .nav-menu a {
-            padding: 0.8rem 1.5rem;
-            border-radius: 6px;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 0.7rem;
-            font-weight: 500;
-            color: var(--white);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nav-menu a:hover, .nav-menu a:focus {
-            background-color: var(--secondary-blue);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-        }
-
-        .nav-menu a:focus {
-            outline: 2px solid var(--accent-blue);
-            outline-offset: 2px;
-        }
-
-        .nav-menu a.current-page {
-            background-color: var(--secondary-blue);
-            border-left: 4px solid var(--accent-blue);
-        }
-
-        /* Hero section */
-        .hero {
-            background: linear-gradient(rgba(0, 51, 102, 0.9), rgba(0, 89, 179, 0.8)), url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
-            background-size: cover;
-            background-position: center;
-            color: var(--white);
-            padding: 4rem 1.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero-title {
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .hero-subtitle {
-            font-size: 1.4rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 0.9rem 2rem;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.7rem;
-            min-width: 180px;
-        }
-
-        .btn-primary {
-            background-color: var(--white);
-            color: var(--primary-blue);
-            border: 2px solid var(--white);
-        }
-
-        .btn-primary:hover, .btn-primary:focus {
-            background-color: transparent;
-            color: var(--white);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--white);
-            border: 2px solid var(--white);
-        }
-
-        .btn-secondary:hover, .btn-secondary:focus {
-            background-color: var(--white);
-            color: var(--primary-blue);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-        }
-
-        /* Main content */
-        main {
-            padding: 0 1.5rem 3rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        section {
-            margin-bottom: 3rem;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 2.5rem;
-        }
-
-        .section-header h2 {
-            color: var(--primary-blue);
-            font-size: 2.2rem;
-            margin-bottom: 0.8rem;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 0.8rem;
-        }
-
-        .section-header h2:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--secondary-blue);
-            border-radius: 2px;
-        }
-
-        .section-header p {
-            color: var(--medium-text);
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        /* Staff table */
-        .table-container {
-            background-color: var(--white);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            margin-bottom: 3rem;
-        }
-
-        .table-container:hover {
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 1rem;
-        }
-
-        thead {
-            background-color: var(--primary-blue);
-            color: var(--white);
-        }
-
-        th {
-            padding: 1.2rem 1rem;
-            text-align: left;
-            font-weight: 600;
-            font-size: 1.1rem;
-            position: relative;
-        }
-
-        th:not(:last-child):after {
-            content: '';
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            height: 60%;
-            width: 1px;
-            background-color: rgba(255,255,255,0.2);
-        }
-
-        tbody tr {
-            border-bottom: 1px solid var(--border-color);
-            transition: var(--transition);
-        }
-
-        tbody tr:hover {
-            background-color: var(--table-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-        }
-
-        td {
-            padding: 1.2rem 1rem;
-            color: var(--medium-text);
-        }
-
-        td:first-child {
-            font-weight: 600;
-            color: var(--primary-blue);
-        }
-
-        /* Staff cards for mobile */
-        .staff-cards {
-            display: none;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .staff-card {
-            background-color: var(--white);
-            border-radius: 10px;
-            padding: 1.8rem;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border-top: 4px solid var(--secondary-blue);
-        }
-
-        .staff-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-        }
-
-        .staff-card-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.2rem;
-        }
-
-        .staff-avatar {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background-color: var(--accent-blue);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            color: var(--primary-blue);
-            font-weight: 600;
-        }
-
-        .staff-name {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--primary-blue);
-            margin-bottom: 0.3rem;
-        }
-
-        .staff-id {
-            font-size: 0.9rem;
-            color: var(--light-text);
-            background-color: #f0f7ff;
-            padding: 0.2rem 0.8rem;
-            border-radius: 20px;
-            display: inline-block;
-        }
-
-        .staff-details {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-        }
-
-        .detail-item {
-            display: flex;
-            align-items: center;
-            gap: 0.7rem;
-        }
-
-        .detail-item i {
-            color: var(--secondary-blue);
-            width: 20px;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--primary-blue);
-            color: var(--white);
-            padding: 2.5rem 1.5rem;
-            text-align: center;
-            margin-top: 4rem;
-        }
-
-        footer h3 {
-            color: var(--white);
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-        }
-
-        footer p {
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.7rem;
-            flex-wrap: wrap;
-        }
-
-        footer a {
-            color: var(--accent-blue);
-            transition: var(--transition);
-        }
-
-        footer a:hover {
-            color: var(--white);
-            text-decoration: underline;
-        }
-
-        .copyright {
-            margin-top: 2rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.8);
-            font-size: 0.9rem;
-        }
-
-        /* Responsive styles */
-        @media (max-width: 1024px) {
-            .hero-title {
-                font-size: 2.4rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            header {
-                padding: 0.7rem 1rem;
-            }
-            
-            .menu-icon {
-                display: flex;
-            }
-            
-            .nav-menu {
-                position: absolute;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                display: none;
-                z-index: 999;
-                animation: slideDown 0.3s ease;
-            }
-            
-            @keyframes slideDown {
-                from { opacity: 0; transform: translateY(-10px); }
-                to { opacity: 1; transform: translateY(0); }
-            }
-            
-            .nav-menu.active {
-                display: block;
-            }
-            
-            .nav-menu ul {
-                flex-direction: column;
-                gap: 0.5rem;
-                padding: 1rem;
-            }
-            
-            .nav-menu a {
-                padding: 1rem;
-                border-radius: 6px;
-                justify-content: flex-start;
-            }
-            
-            .hero {
-                padding: 3rem 1rem;
-            }
-            
-            .hero-title {
-                font-size: 2rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 300px;
-            }
-            
-            main {
-                padding: 0 1rem 2rem;
-            }
-            
-            /* Switch from table to cards on mobile */
-            .table-container {
-                display: none;
-            }
-            
-            .staff-cards {
-                display: grid;
-            }
-            
-            footer {
-                padding: 2rem 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
-            }
-            
-            .logo img {
-                height: 50px;
-            }
-            
-            .logo figcaption {
-                font-size: 0.9rem;
-            }
-            
-            .hero-title {
-                font-size: 1.8rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1rem;
-            }
-            
-            .section-header h2 {
-                font-size: 1.8rem;
-            }
-            
-            .staff-cards {
-                grid-template-columns: 1fr;
-            }
-            
-            footer h3 {
-                font-size: 1.3rem;
-            }
-        }
-
-        /* Print styles */
-        @media print {
-            .nav-menu, .hero-buttons, .menu-icon {
-                display: none !important;
-            }
-            
-            .table-container {
-                display: block !important;
-                box-shadow: none;
-                border: 1px solid var(--border-color);
-            }
-            
-            .staff-cards {
-                display: none !important;
-            }
-            
-            footer {
-                margin-top: 2rem;
-                border-top: 2px solid var(--primary-blue);
-            }
-        }
-    </style>
-</head> 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Egerton University Transport Department Emergency Alert - Critical safety information and emergency contacts">
+  <meta name="keywords" content="Egerton University, emergency, transport safety, road accident, emergency contacts">
+  <title>Egerton University Transport Department - Emergency Alert</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" href="images/logo.jpeg">
+  <style>
+    /* Reset and base styles */
+    :root {
+      --primary-blue: #003366;
+      --secondary-blue: #0059b3;
+      --accent-blue: #cce6ff;
+      --emergency-red: #dc3545;
+      --emergency-dark-red: #a71d2a;
+      --warning-yellow: #ffc107;
+      --warning-dark: #e0a800;
+      --safety-green: #28a745;
+      --light-bg: #f9f9f9;
+      --white: #ffffff;
+      --dark-text: #222222;
+      --medium-text: #444444;
+      --light-text: #666666;
+      --border-color: #dddddd;
+      --shadow: 0 4px 12px rgba(0,0,0,0.1);
+      --emergency-shadow: 0 4px 15px rgba(220, 53, 69, 0.2);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      line-height: 1.6;
+      background-color: var(--light-bg);
+      color: var(--dark-text);
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+
+    ul, ol {
+      padding-left: 1.5rem;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Emergency alert banner */
+    .emergency-banner {
+      background: linear-gradient(90deg, var(--emergency-red), var(--emergency-dark-red));
+      color: var(--white);
+      padding: 1rem;
+      text-align: center;
+      animation: pulse 2s infinite;
+      margin-bottom: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.95; }
+      50% { opacity: 1; }
+      100% { opacity: 0.95; }
+    }
+
+    .emergency-banner:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    .emergency-banner h1 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+    }
+
+    .emergency-banner p {
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Header and navigation */
+    header {
+      background-color: var(--primary-blue);
+      color: var(--white);
+      padding: 0.8rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo img {
+      height: 55px;
+      border-radius: 5px;
+      border: 2px solid var(--accent-blue);
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo figcaption {
+      font-size: 1rem;
+      color: var(--accent-blue);
+      text-align: left;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    /* Mobile menu icon */
+    .menu-icon {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+      padding: 0.5rem;
+      background: transparent;
+      border: none;
+      z-index: 1001;
+    }
+
+    .menu-icon span {
+      width: 25px;
+      height: 3px;
+      background: var(--white);
+      transition: var(--transition);
+      border-radius: 2px;
+    }
+
+    .menu-icon.active span:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .menu-icon.active span:nth-child(2) {
+      opacity: 0;
+      width: 0;
+    }
+
+    .menu-icon.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    /* Navigation menu */
+    .nav-menu {
+      background-color: var(--primary-blue);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: var(--transition);
+    }
+
+    .nav-menu ul {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 0.8rem 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .nav-menu a {
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-weight: 500;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-menu a:hover, .nav-menu a:focus {
+      background-color: var(--secondary-blue);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    .nav-menu a:focus {
+      outline: 2px solid var(--accent-blue);
+      outline-offset: 2px;
+    }
+
+    .nav-menu a.current-page {
+      background-color: var(--secondary-blue);
+      border-left: 4px solid var(--accent-blue);
+    }
+
+    /* Main content */
+    main {
+      padding: 2rem 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    section.main {
+      background-color: var(--white);
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 2.5rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    section.main:hover {
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    }
+
+    section.main:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 6px;
+      height: 100%;
+    }
+
+    .emergency-contacts:before {
+      background-color: var(--emergency-red);
+    }
+
+    .accident-procedure:before {
+      background-color: var(--warning-yellow);
+    }
+
+    .safety-tips:before {
+      background-color: var(--safety-green);
+    }
+
+    h2 {
+      color: var(--primary-blue);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 1.8rem;
+    }
+
+    h2 i {
+      color: var(--emergency-red);
+    }
+
+    /* Emergency contacts */
+    .emergency-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .contact-card {
+      background-color: #fff5f5;
+      border: 1px solid #ffcccc;
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--emergency-shadow);
+    }
+
+    .contact-card.critical {
+      background-color: #fff3cd;
+      border-color: #ffeaa7;
+    }
+
+    .contact-card h3 {
+      color: var(--emergency-red);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 1.3rem;
+    }
+
+    .contact-card.critical h3 {
+      color: var(--warning-dark);
+    }
+
+    .contact-number {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--emergency-red);
+      margin: 1rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .contact-card.critical .contact-number {
+      color: var(--warning-dark);
+    }
+
+    .contact-actions {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.7rem 1.5rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-call {
+      background-color: var(--emergency-red);
+      color: var(--white);
+    }
+
+    .btn-call:hover {
+      background-color: var(--emergency-dark-red);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+    }
+
+    .btn-sms {
+      background-color: var(--secondary-blue);
+      color: var(--white);
+    }
+
+    .btn-sms:hover {
+      background-color: var(--primary-blue);
+      transform: translateY(-2px);
+    }
+
+    /* Accident procedure */
+    .procedure-steps {
+      counter-reset: step-counter;
+      margin-top: 1.5rem;
+    }
+
+    .procedure-step {
+      background-color: #fff9e6;
+      border-left: 4px solid var(--warning-yellow);
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 1rem;
+      border-radius: 0 6px 6px 0;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .procedure-step:hover {
+      background-color: #fff3cd;
+      transform: translateX(5px);
+    }
+
+    .procedure-step:before {
+      counter-increment: step-counter;
+      content: counter(step-counter);
+      position: absolute;
+      left: -1.8rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: var(--warning-yellow);
+      color: var(--dark-text);
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .procedure-step.critical:before {
+      background-color: var(--emergency-red);
+      color: var(--white);
+    }
+
+    /* Safety tips */
+    .safety-tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .tip-card {
+      background-color: #f0fff4;
+      border: 1px solid #c3e6cb;
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition: var(--transition);
+    }
+
+    .tip-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(40, 167, 69, 0.15);
+    }
+
+    .tip-card h3 {
+      color: var(--safety-green);
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 1.2rem;
+    }
+
+    .tip-card p {
+      color: var(--medium-text);
+      line-height: 1.7;
+    }
+
+    /* Emergency quick dial */
+    .quick-dial {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 999;
+    }
+
+    .emergency-button {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background-color: var(--emergency-red);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 4px 15px rgba(220, 53, 69, 0.4);
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      animation: pulse 1.5s infinite;
+    }
+
+    .emergency-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(220, 53, 69, 0.6);
+    }
+
+    .emergency-dropdown {
+      position: absolute;
+      bottom: 80px;
+      right: 0;
+      background-color: var(--white);
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+      padding: 1rem;
+      width: 250px;
+      display: none;
+      z-index: 1000;
+    }
+
+    .emergency-dropdown.show {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .emergency-dropdown h4 {
+      color: var(--emergency-red);
+      margin-bottom: 0.8rem;
+      font-size: 1.1rem;
+    }
+
+    .dropdown-contact {
+      padding: 0.7rem;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .dropdown-contact:last-child {
+      border-bottom: none;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--primary-blue);
+      color: var(--white);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      margin-top: 4rem;
+    }
+
+    footer h3 {
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+    }
+
+    footer p {
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+    }
+
+    footer a {
+      color: var(--accent-blue);
+      transition: var(--transition);
+    }
+
+    footer a:hover {
+      color: var(--white);
+      text-decoration: underline;
+    }
+
+    .copyright {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.8);
+      font-size: 0.9rem;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 1024px) {
+      .emergency-grid, .safety-tips-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 0.7rem 1rem;
+      }
+      
+      .menu-icon {
+        display: flex;
+      }
+      
+      .nav-menu {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        display: none;
+        z-index: 999;
+        animation: slideDown 0.3s ease;
+      }
+      
+      @keyframes slideDown {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      
+      .nav-menu.active {
+        display: block;
+      }
+      
+      .nav-menu ul {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem;
+      }
+      
+      .nav-menu a {
+        padding: 1rem;
+        border-radius: 6px;
+        justify-content: flex-start;
+      }
+      
+      .emergency-banner h1 {
+        font-size: 1.3rem;
+      }
+      
+      .emergency-banner p {
+        font-size: 1rem;
+      }
+      
+      main {
+        padding: 1.5rem 1rem;
+      }
+      
+      section.main {
+        padding: 1.5rem;
+      }
+      
+      h2 {
+        font-size: 1.5rem;
+      }
+      
+      .contact-number {
+        font-size: 1.3rem;
+      }
+      
+      .quick-dial {
+        bottom: 1.5rem;
+        right: 1.5rem;
+      }
+      
+      footer {
+        padding: 2rem 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+      
+      .logo img {
+        height: 50px;
+      }
+      
+      .logo figcaption {
+        font-size: 0.9rem;
+      }
+      
+      .emergency-banner h1 {
+        font-size: 1.2rem;
+        flex-direction: column;
+        gap: 0.3rem;
+      }
+      
+      h2 {
+        font-size: 1.3rem;
+      }
+      
+      section.main {
+        padding: 1.2rem;
+      }
+      
+      .emergency-grid, .safety-tips-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-actions {
+        flex-direction: column;
+      }
+      
+      .btn {
+        width: 100%;
+      }
+      
+      .emergency-button {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+      }
+      
+      .emergency-dropdown {
+        width: 220px;
+      }
+      
+      footer h3 {
+        font-size: 1.3rem;
+      }
+    }
+
+    /* Print styles */
+    @media print {
+      .nav-menu, .emergency-banner, .quick-dial, .menu-icon {
+        display: none !important;
+      }
+      
+      .btn, .emergency-button {
+        display: none !important;
+      }
+      
+      section.main {
+        box-shadow: none;
+        border: 1px solid var(--border-color);
+        page-break-inside: avoid;
+      }
+      
+      footer {
+        margin-top: 2rem;
+        border-top: 2px solid var(--primary-blue);
+      }
+    }
+  </style>
+</head>
+
 <body>
-    <header class="main-header">  
-        <div class="logo">      
-            <figure>              
-                <img src="images/logo.jpeg" alt="Egerton University Logo">
-                <div class="logo-text">
-                    <figcaption>TRANSPORT DEPARTMENT STAFF</figcaption>
-                </div>
-            </figure>
+  <!-- Emergency Alert Banner -->
+  <div class="emergency-banner" role="alert">
+    <h1><i class="fas fa-exclamation-triangle"></i> EMERGENCY ALERT SYSTEM</h1>
+    <p>For immediate assistance during transport emergencies, use the contacts below. In case of life-threatening emergencies, dial 999 or 112 immediately.</p>
+  </div>
+  
+  <header class="main-header">  
+    <div class="logo">      
+      <figure>              
+        <img src="images/logo.jpeg" alt="Egerton University Logo">
+        <div class="logo-text">
+          <figcaption>TRANSPORT DEPARTMENT EMERGENCY</figcaption>
         </div>
-        <button class="menu-icon" id="menu-icon" aria-label="Toggle navigation menu" aria-expanded="false">
-            <span></span>  
-            <span></span>
-            <span></span>
-        </button>
-    </header>
-    
-    <nav class="nav-menu" id="nav-menu" aria-label="Main navigation">
-        <ul>
-            <li><a href="index.html"><i class="fas fa-house"></i> Home</a></li>            
-            <li><a href="timetable.html"><i class="fas fa-calendar-check"></i> Timetable Schedule</a></li>                       
-            <li><a href="booking.html" class="current-page"><i class="fas fa-book"></i> Booking Section</a></li>                        
-            <li><a href="emergency.html"><i class="fas fa-first-aid"></i> Emergency Alert</a></li>    
-        </ul>
-    </nav>
-
-    <div class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Our Dedicated Transport Team</h1>
-            <p class="hero-subtitle">Meet the professionals ensuring safe, reliable, and efficient transportation services for Egerton University</p>
-            <div class="hero-buttons">
-                <a href="#staff-table" class="btn btn-primary"><i class="fas fa-users"></i> View Staff Directory</a>
-                <a href="#contact" class="btn btn-secondary"><i class="fas fa-phone-alt"></i> Contact Our Team</a>
-            </div>
-        </div>
+      </figure>
     </div>
-    
-    <main>
-        <section class="section-header">
-            <h2>Transport Department Staff</h2>
-            <p>Our team of dedicated professionals is committed to providing exceptional transport services to the Egerton University community.</p>
-        </section>
-        
-        <!-- Staff Table for Desktop -->
-        <div class="table-container" id="staff-table">
-            <table aria-label="Transport Department Staff Directory">
-                <thead>
-                    <tr>
-                        <th><i class="fas fa-user"></i> Name</th>
-                        <th><i class="fas fa-id-badge"></i> Staff ID</th>
-                        <th><i class="fas fa-building"></i> Department</th>
-                        <th><i class="fas fa-phone"></i> Contact Information</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Hillary Odhiambo Ochieng</td>
-                        <td>001</td>
-                        <td>Transport Management</td>
-                        <td><a href="tel:0701779262">0701 779 262</a></td>
-                    </tr>
-                    <tr>
-                        <td>Sammy Njenga</td>
-                        <td>002</td>
-                        <td>Vehicle Maintenance</td>
-                        <td><a href="tel:0773199029">0773 199 029</a></td>
-                    </tr>
-                    <tr>
-                        <td>Rinah Cheti</td>
-                        <td>003</td>
-                        <td>Transport Coordination</td>
-                        <td><a href="tel:0794085603">0794 085 603</a></td>
-                    </tr>  
-                    <tr>
-                        <td>Aisha Mohammed</td>
-                        <td>004</td>
-                        <td>Booking & Scheduling</td>
-                        <td><a href="tel:0714972407">0714 972 407</a></td>
-                    </tr>
-                    <tr>
-                        <td>Sophia Madina</td>
-                        <td>005</td>
-                        <td>Safety & Compliance</td>
-                        <td><a href="tel:0716682238">0716 682 238</a></td>
-                    </tr>
-                    <tr>
-                        <td>Ummu Mohammed</td>
-                        <td>006</td>
-                        <td>Customer Service</td>
-                        <td><a href="tel:0710759553">0710 759 553</a></td>
-                    </tr>
-                </tbody>
-            </table>
+    <button class="menu-icon" id="menu-icon" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span></span>  
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+  
+  <nav class="nav-menu" id="nav-menu" aria-label="Main navigation">
+    <ul>
+      <li><a href="index.html"><i class="fas fa-house"></i> Home</a></li>
+      <li><a href="staff.html"><i class="fas fa-users"></i> Staff</a></li>            
+      <li><a href="timetable.html"><i class="fas fa-calendar-check"></i> Timetable Schedule</a></li>                       
+      <li><a href="booking.html"><i class="fas fa-book"></i> Booking Section</a></li>                        
+    </ul>
+  </nav>
+  
+  <main> 
+    <section class="main emergency-contacts">
+      <h2><i class="fa-solid fa-phone"></i> Emergency Contacts</h2>
+      <p class="section-intro">Save these numbers in your phone. Tap to call or send an SMS for immediate assistance.</p>
+      
+      <div class="emergency-grid">
+        <div class="contact-card critical">
+          <h3><i class="fas fa-ambulance"></i> Medical Emergency</h3>
+          <p>For serious injuries, medical emergencies, or ambulance services.</p>
+          <div class="contact-number"><i class="fas fa-phone-volume"></i> 0722 123 456</div>
+          <div class="contact-actions">
+            <button class="btn btn-call" onclick="window.location.href='tel:0722123456'">
+              <i class="fas fa-phone"></i> Call Now
+            </button>
+            <button class="btn btn-sms" onclick="window.location.href='sms:0722123456'">
+              <i class="fas fa-sms"></i> Send SMS
+            </button>
+          </div>
         </div>
         
-        <!-- Staff Cards for Mobile -->
-        <div class="staff-cards" id="staff-cards">
-            <div class="staff-card">
-                <div class="staff-card-header">
-                    <div class="staff-avatar">H</div>
-                    <div>
-                        <div class="staff-name">Hillary Odhiambo Ochieng</div>
-                        <div class="staff-id">ID: 001</div>
-                    </div>
-                </div>
-                <div class="staff-details">
-                    <div class="detail-item">
-                        <i class="fas fa-building"></i>
-                        <span>Transport Management</span>
-                    </div>
-                    <div class="detail-item">
-                        <i class="fas fa-phone"></i>
-                        <span><a href="tel:0701779262">0701 779 262</a></span>
-                    </div>
-                    <div class="detail-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>h.odhiambo@egerton.ac.ke</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="staff-card">
-                <div class="staff-card-header">
-                    <div class="staff-avatar">S</div>
-                    <div>
-                        <div class="staff-name">Sammy Njenga</div>
-                        <div class="staff-id">ID: 002</div>
-                    </div>
-                </div>
-                <div class="staff-details">
-                    <div class="detail-item">
-                        <i class="fas fa-building"></i>
-                        <span>Vehicle Maintenance</span>
-                    </div>
-                    <div class="detail-item">
-                        <i class="fas fa-phone"></i>
-                        <span><a href="tel:0773199029">0773 199 029</a></span>
-                    </div>
-                    <div class="detail-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>s.njenga@egerton.ac.ke</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="staff-card">
-                <div class="staff-card-header">
-                    <div class="staff-avatar">R</div>
-                    <div>
-                        <div class="staff-name">Rinah Cheti</div>
-                        <div class="staff-id">ID: 003</div>
-                    </div>
-                </div>
-                <div class="staff-details">
-                    <div class="detail-item">
-                        <i class="fas fa-building"></i>
-                        <span>Transport Coordination</span>
-                    </div>
-                    <div class="detail-item">
-                        <i class="fas fa-phone"></i>
-                        <span><a href="tel:0794085603">0794 085 603</a></span>
-                    </div>
-                    <div class="detail-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>r.cheti@egerton.ac.ke</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="staff-card">
-                <div class="staff-card-header">
-                    <div class="staff-avatar">A</div>
-                    <div>
-                        <div class="staff-name">Aisha Mohammed</div>
-                        <div class="staff-id">ID: 004</div>
-                    </div>
-                </div>
-                <div class="staff-details">
-                    <div class="detail-item">
-                        <i class="fas fa-building"></i>
-                        <span>Booking & Scheduling</span>
-                    </div>
-                    <div class="detail-item">
-                        <i class="fas fa-phone"></i>
-                        <span><a href="tel:0714972407">0714 972 407</a></span>
-                    </div>
-                    <div class="detail-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>a.mohammed@egerton.ac.ke</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="staff-card">
-                <div class="staff-card-header">
-                    <div class="staff-avatar">S</div>
-                    <div>
-                        <div class="staff-name">Sophia Madina</div>
-                        <div class="staff-id">ID: 005</div>
-                    </div>
-                </div>
-                <div class="staff-details">
-                    <div class="detail-item">
-                        <i class="fas fa-building"></i>
-                        <span>Safety & Compliance</span>
-                    </div>
-                    <div class="detail-item">
-                        <i class="fas fa-phone"></i>
-                        <span><a href="tel:0716682238">0716 682 238</a></span>
-                    </div>
-                    <div class="detail-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>s.madina@egerton.ac.ke</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="staff-card">
-                <div class="staff-card-header">
-                    <div class="staff-avatar">U</div>
-                    <div>
-                        <div class="staff-name">Ummu Mohammed</div>
-                        <div class="staff-id">ID: 006</div>
-                    </div>
-                </div>
-                <div class="staff-details">
-                    <div class="detail-item">
-                        <i class="fas fa-building"></i>
-                        <span>Customer Service</span>
-                    </div>
-                    <div class="detail-item">
-                        <i class="fas fa-phone"></i>
-                        <span><a href="tel:0710759553">0710 759 553</a></span>
-                    </div>
-                    <div class="detail-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>u.mohammed@egerton.ac.ke</span>
-                    </div>
-                </div>
-            </div>
+        <div class="contact-card">
+          <h3><i class="fas fa-fire"></i> Fire Department</h3>
+          <p>For fire emergencies, chemical spills, or rescue operations.</p>
+          <div class="contact-number"><i class="fas fa-phone-volume"></i> 112 (Toll-free)</div>
+          <div class="contact-actions">
+            <button class="btn btn-call" onclick="window.location.href='tel:112'">
+              <i class="fas fa-phone"></i> Call Now
+            </button>
+          </div>
         </div>
         
-        <!-- Additional Information Section -->
-        <section class="section-header">
-            <h2>Staff Responsibilities</h2>
-            <p>Each member of our team plays a crucial role in ensuring smooth transport operations</p>
-        </section>
-        
-        <div class="table-container">
-            <table aria-label="Staff Responsibilities">
-                <thead>
-                    <tr>
-                        <th><i class="fas fa-tasks"></i> Department</th>
-                        <th><i class="fas fa-clipboard-check"></i> Key Responsibilities</th>
-                        <th><i class="fas fa-clock"></i> Office Hours</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Transport Management</td>
-                        <td>Overseeing all transport operations, vehicle allocation, staff supervision</td>
-                        <td>Mon-Fri: 8:00 AM - 5:00 PM</td>
-                    </tr>
-                    <tr>
-                        <td>Vehicle Maintenance</td>
-                        <td>Regular vehicle servicing, repairs, safety inspections, maintenance scheduling</td>
-                        <td>Mon-Fri: 7:00 AM - 4:00 PM</td>
-                    </tr>
-                    <tr>
-                        <td>Transport Coordination</td>
-                        <td>Trip scheduling, driver coordination, route planning, logistics management</td>
-                        <td>Mon-Fri: 8:00 AM - 5:00 PM</td>
-                    </tr>
-                    <tr>
-                        <td>Booking & Scheduling</td>
-                        <td>Processing trip requests, managing bookings, coordinating with departments</td>
-                        <td>Mon-Fri: 8:00 AM - 5:00 PM</td>
-                    </tr>
-                    <tr>
-                        <td>Safety & Compliance</td>
-                        <td>Safety training, compliance checks, accident reporting, emergency procedures</td>
-                        <td>Mon-Fri: 8:00 AM - 5:00 PM</td>
-                    </tr>
-                    <tr>
-                        <td>Customer Service</td>
-                        <td>Handling inquiries, complaints, feedback, and providing transport information</td>
-                        <td>Mon-Fri: 8:00 AM - 5:00 PM</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="contact-card">
+          <h3><i class="fas fa-shield-alt"></i> Police Hotline</h3>
+          <p>For crime reporting, security threats, or police assistance.</p>
+          <div class="contact-number"><i class="fas fa-phone-volume"></i> 999 (Toll-free)</div>
+          <div class="contact-actions">
+            <button class="btn btn-call" onclick="window.location.href='tel:999'">
+              <i class="fas fa-phone"></i> Call Now
+            </button>
+          </div>
         </div>
-    </main>
+        
+        <div class="contact-card critical">
+          <h3><i class="fas fa-bus"></i> Transport Department</h3>
+          <p>University transport emergencies, breakdowns, or accidents involving university vehicles.</p>
+          <div class="contact-number"><i class="fas fa-phone-volume"></i> 0701 779 262</div>
+          <div class="contact-actions">
+            <button class="btn btn-call" onclick="window.location.href='tel:0701779262'">
+              <i class="fas fa-phone"></i> Call Now
+            </button>
+            <button class="btn btn-sms" onclick="window.location.href='sms:0701779262'">
+              <i class="fas fa-sms"></i> Send SMS
+            </button>
+          </div>
+        </div>
+        
+        <div class="contact-card">
+          <h3><i class="fas fa-car-crash"></i> Road Accident Response</h3>
+          <p>Rapid response unit for road accidents and traffic incidents.</p>
+          <div class="contact-number"><i class="fas fa-phone-volume"></i> 911</div>
+          <div class="contact-actions">
+            <button class="btn btn-call" onclick="window.location.href='tel:911'">
+              <i class="fas fa-phone"></i> Call Now
+            </button>
+          </div>
+        </div>
+        
+        <div class="contact-card">
+          <h3><i class="fas fa-tools"></i> Breakdown Assistance</h3>
+          <p>24/7 towing services and vehicle breakdown support.</p>
+          <div class="contact-number"><i class="fas fa-phone-volume"></i> 0733 987 654</div>
+          <div class="contact-actions">
+            <button class="btn btn-call" onclick="window.location.href='tel:0733987654'">
+              <i class="fas fa-phone"></i> Call Now
+            </button>
+            <button class="btn btn-sms" onclick="window.location.href='sms:0733987654'">
+              <i class="fas fa-sms"></i> Send SMS
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
     
-    <footer id="contact">
-        <h3>Contact Transport Department</h3>
-        <p><i class="fas fa-phone"></i> <b>Phone:</b> <a href="tel:0701779262">0701 779 262</a></p>
-        <p><i class="fas fa-envelope"></i> <b>Email:</b> <a href="mailto:transport@egerton.ac.ke">transport@egerton.ac.ke</a></p>
-        <p><i class="fas fa-clock"></i> <b>Office Hours:</b> Mon-Fri 8:00 AM - 5:00 PM</p>
-        <p><i class="fas fa-map-marker-alt"></i> <b>Location:</b> Transport Department, Main Campus</p>
-        <p class="copyright">&copy; 2025 Egerton University. All rights reserved. <br>Our staff is dedicated to serving the university community with excellence.</p>
-    </footer>
+    <section class="main accident-procedure">
+      <h2><i class="fa-solid fa-car-burst"></i> What to Do in Case of a Road Accident</h2>
+      <p class="section-intro">Follow these steps carefully to ensure safety and proper handling of the situation.</p>
+      
+      <div class="procedure-steps">
+        <div class="procedure-step">
+          <h3>Stay Calm and Ensure Safety</h3>
+          <p>Take a deep breath. Check yourself and others for injuries. If possible, move to a safe location away from traffic.</p>
+        </div>
+        
+        <div class="procedure-step">
+          <h3>Turn On Hazard Lights</h3>
+          <p>Immediately activate your vehicle's hazard lights to alert other drivers. Use reflective triangles if available.</p>
+        </div>
+        
+        <div class="procedure-step">
+          <h3>Move Vehicle Off Road</h3>
+          <p>If the vehicle is drivable and it's safe to do so, move it to the shoulder or a safe area away from traffic.</p>
+        </div>
+        
+        <div class="procedure-step critical">
+          <h3>Call Emergency Services</h3>
+          <p>Dial 999 for police, 112 for fire/ambulance, or use the emergency contacts above. Provide clear location details.</p>
+        </div>
+        
+        <div class="procedure-step">
+          <h3>Record Important Details</h3>
+          <p>Note location, time, vehicle registration numbers, insurance details, and take photos if it's safe to do so.</p>
+        </div>
+        
+        <div class="procedure-step critical">
+          <h3>Do NOT Leave the Scene</h3>
+          <p>Remain at the accident scene until authorities arrive and give you permission to leave, unless medical evacuation is needed.</p>
+        </div>
+        
+        <div class="procedure-step">
+          <h3>Cooperate with Authorities</h3>
+          <p>Provide accurate information to police and emergency responders. Follow their instructions carefully.</p>
+        </div>
+      </div>
+    </section>
     
-    <script>
-        // Mobile menu toggle
-        const menuIcon = document.getElementById('menu-icon');
-        const navMenu = document.getElementById('nav-menu');
-        let isOpen = false;
+    <section class="main safety-tips">
+      <h2><i class="fa-solid fa-exclamation"></i> Road Safety & Preparedness Tips</h2>
+      <p class="section-intro">Prevention is key. Follow these safety measures to minimize risks during travel.</p>
+      
+      <div class="safety-tips-grid">
+        <div class="tip-card">
+          <h3><i class="fas fa-medkit"></i> First Aid Kit</h3>
+          <p>Always carry a well-stocked first aid kit. Ensure university vehicles are equipped with medical supplies.</p>
+        </div>
+        
+        <div class="tip-card">
+          <h3><i class="fas fa-tire"></i> Vehicle Inspection</h3>
+          <p>Before long trips, check spare tire, tools, fuel, oil, brakes, and lights. Report any issues to transport department.</p>
+        </div>
+        
+        <div class="tip-card">
+          <h3><i class="fas fa-fire-extinguisher"></i> Fire Safety</h3>
+          <p>Ensure vehicles have functional fire extinguishers. Know how to use them and check expiry dates regularly.</p>
+        </div>
+        
+        <div class="tip-card">
+          <h3><i class="fas fa-mobile-alt"></i> Communication Preparedness</h3>
+          <p>Keep your phone charged. Carry a power bank. Save emergency contacts in your phone with "ICE" (In Case of Emergency) prefix.</p>
+        </div>
+        
+        <div class="tip-card">
+          <h3><i class="fas fa-user-friends"></i> Travel Companions</h3>
+          <p>Inform someone about your travel plans, route, and expected arrival time. Avoid traveling alone when possible.</p>
+        </div>
+        
+        <div class="tip-card">
+          <h3><i class="fas fa-file-alt"></i> Documentation</h3>
+          <p>Carry identification, insurance documents, and university transport authorization when using university vehicles.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Emergency Quick Dial -->
+  <div class="quick-dial">
+    <button class="emergency-button" id="emergency-btn" aria-label="Emergency quick dial">
+      <i class="fas fa-phone"></i>
+    </button>
+    <div class="emergency-dropdown" id="emergency-dropdown">
+      <h4>Emergency Quick Dial</h4>
+      <div class="dropdown-contact">
+        <span>Police: 999</span>
+        <button class="btn btn-call" onclick="window.location.href='tel:999'">Call</button>
+      </div>
+      <div class="dropdown-contact">
+        <span>Ambulance: 112</span>
+        <button class="btn btn-call" onclick="window.location.href='tel:112'">Call</button>
+      </div>
+      <div class="dropdown-contact">
+        <span>Transport Dept: 0701 779 262</span>
+        <button class="btn btn-call" onclick="window.location.href='tel:0701779262'">Call</button>
+      </div>
+    </div>
+  </div>
+  
+  <footer class="footer">
+    <h3>Emergency Contact Information</h3>
+    <p><i class="fas fa-phone"></i> <b>Transport Emergency:</b> <a href="tel:0701779262">0701 779 262</a></p>
+    <p><i class="fas fa-envelope"></i> <b>Email:</b> <a href="mailto:transport-emergency@egerton.ac.ke">transport-emergency@egerton.ac.ke</a></p>
+    <p><i class="fas fa-clock"></i> <b>24/7 Emergency Line:</b> Operational at all times for transport-related emergencies</p>
+    <p class="copyright">&copy; 2025 Egerton University. All rights reserved. <br>Safety is our priority. Save these contacts and share with fellow students and staff.</p>
+  </footer>
+    
+  <script>
+    // Mobile menu toggle
+    const menuIcon = document.getElementById('menu-icon');
+    const navMenu = document.getElementById('nav-menu');
+    let isMenuOpen = false;
 
-        menuIcon.addEventListener('click', () => {
-            isOpen = !isOpen;
-            menuIcon.classList.toggle('active');
-            menuIcon.setAttribute('aria-expanded', isOpen);
-            navMenu.classList.toggle('active');
-            
-            // Close menu when clicking a link
-            if (isOpen) {
-                document.querySelectorAll('.nav-menu a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        menuIcon.classList.remove('active');
-                        menuIcon.setAttribute('aria-expanded', false);
-                        navMenu.classList.remove('active');
-                        isOpen = false;
-                    });
-                });
-            }
-        });
-
-        // Accessibility improvements
-        document.addEventListener('keydown', (e) => {
-            // Close menu on Escape key
-            if (e.key === 'Escape' && isOpen) {
-                menuIcon.classList.remove('active');
-                menuIcon.setAttribute('aria-expanded', false);
-                navMenu.classList.remove('active');
-                isOpen = false;
-            }
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const targetId = this.getAttribute('href');
-                if (targetId !== '#') {
-                    e.preventDefault();
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                }
-            });
-        });
-        
-        // Format phone numbers for better readability
-        document.querySelectorAll('a[href^="tel:"]').forEach(link => {
-            const phoneNumber = link.getAttribute('href').replace('tel:', '');
-            if (phoneNumber.length === 10) {
-                const formatted = `${phoneNumber.substring(0, 4)} ${phoneNumber.substring(4, 7)} ${phoneNumber.substring(7)}`;
-                link.textContent = formatted;
-            }
-        });
-        
-        // Highlight current page in navigation
-        const currentPath = window.location.pathname;
-        const currentPage = currentPath.substring(currentPath.lastIndexOf('/') + 1);
-        
+    menuIcon.addEventListener('click', () => {
+      isMenuOpen = !isMenuOpen;
+      menuIcon.classList.toggle('active');
+      menuIcon.setAttribute('aria-expanded', isMenuOpen);
+      navMenu.classList.toggle('active');
+      
+      // Close menu when clicking a link
+      if (isMenuOpen) {
         document.querySelectorAll('.nav-menu a').forEach(link => {
-            const linkHref = link.getAttribute('href');
-            if (linkHref === currentPage || (currentPage === '' && linkHref === 'index.html')) {
-                link.classList.add('current-page');
-            }
+          link.addEventListener('click', () => {
+            menuIcon.classList.remove('active');
+            menuIcon.setAttribute('aria-expanded', false);
+            navMenu.classList.remove('active');
+            isMenuOpen = false;
+          });
         });
-    </script>   
+      }
+    });
+
+    // Emergency quick dial toggle
+    const emergencyBtn = document.getElementById('emergency-btn');
+    const emergencyDropdown = document.getElementById('emergency-dropdown');
+    let isDropdownOpen = false;
+
+    emergencyBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      isDropdownOpen = !isDropdownOpen;
+      emergencyDropdown.classList.toggle('show');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!emergencyBtn.contains(e.target) && !emergencyDropdown.contains(e.target)) {
+        emergencyDropdown.classList.remove('show');
+        isDropdownOpen = false;
+      }
+    });
+
+    // Accessibility improvements
+    document.addEventListener('keydown', (e) => {
+      // Close menu on Escape key
+      if (e.key === 'Escape') {
+        if (isMenuOpen) {
+          menuIcon.classList.remove('active');
+          menuIcon.setAttribute('aria-expanded', false);
+          navMenu.classList.remove('active');
+          isMenuOpen = false;
+        }
+        
+        if (isDropdownOpen) {
+          emergencyDropdown.classList.remove('show');
+          isDropdownOpen = false;
+        }
+      }
+    });
+
+    // Make emergency contacts clickable
+    document.querySelectorAll('.contact-number').forEach(contact => {
+      const phoneNumber = contact.textContent.match(/\d[\d\s]{8,}\d/);
+      if (phoneNumber) {
+        const cleanNumber = phoneNumber[0].replace(/\s/g, '');
+        contact.style.cursor = 'pointer';
+        contact.title = `Click to call ${phoneNumber[0]}`;
+        contact.addEventListener('click', () => {
+          window.location.href = `tel:${cleanNumber}`;
+        });
+      }
+    });
+
+    // Add current year to copyright
+    document.addEventListener('DOMContentLoaded', () => {
+      const copyrightElement = document.querySelector('.copyright');
+      if (copyrightElement) {
+        const currentYear = new Date().getFullYear();
+        copyrightElement.innerHTML = copyrightElement.innerHTML.replace('2025', currentYear);
+      }
+      
+      // Add confirmation for emergency calls
+      document.querySelectorAll('.btn-call').forEach(button => {
+        button.addEventListener('click', function(e) {
+          const phoneNumber = this.closest('.contact-card, .dropdown-contact')?.querySelector('.contact-number, span')?.textContent;
+          if (phoneNumber && confirm(`Are you sure you want to call ${phoneNumber.trim()}?`)) {
+            // Call will proceed via href
+          } else {
+            e.preventDefault();
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
